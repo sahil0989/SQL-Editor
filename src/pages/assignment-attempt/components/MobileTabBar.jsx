@@ -17,6 +17,7 @@ const MobileTabBar = ({ activeTab, onTabChange }) => {
     >
       {TABS?.map((tab) => {
         const active = activeTab === tab?.id;
+
         return (
           <button
             key={tab?.id}
@@ -26,9 +27,12 @@ const MobileTabBar = ({ activeTab, onTabChange }) => {
               borderBottomColor: active ? "var(--color-primary)" : "transparent",
               color: active ? "var(--color-primary)" : "var(--color-muted-foreground)"
             }}
-            aria-selected={active}
           >
-            <Icon name={tab?.icon} size={16} color={active ? "var(--color-primary)" : "var(--color-muted-foreground)"} />
+            <Icon
+              name={tab?.icon}
+              size={16}
+              color={active ? "var(--color-primary)" : "var(--color-muted-foreground)"}
+            />
             <span className="text-xs font-caption whitespace-nowrap">{tab?.label}</span>
           </button>
         );
