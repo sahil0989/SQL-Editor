@@ -91,4 +91,10 @@ export const breakStreak = async (sessionId) => {
   }
 };
 
-export default { getOrCreateStreak, incrementStreak, breakStreak };
+const streakService = {
+  getOrCreateStreak,
+  incrementStreak,
+  breakStreak
+};
+
+export default streakService;

@@ -107,4 +107,8 @@ export const compareResults = (userRows, userColumns, expectedResult) => {
   return { isCorrect: false, score: 0, matchType: 'none' };
 };
 
-export default { compareResults };
+const scoringService = {
+  compareResults
+};
+
+export default scoringService;
