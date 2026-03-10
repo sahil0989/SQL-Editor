@@ -55,47 +55,6 @@ const MOCK_DB = {
   }
 };
 
-/* ─── Mock hints per assignment id ───────────────────────────────────────── */
-const MOCK_HINTS = {
-  1: [
-    "Start with SELECT * FROM users to retrieve all columns, then narrow down to specific columns you need.",
-    "Use WHERE clause to filter rows: WHERE country = 'USA' will return only US-based users.",
-    "Add ORDER BY name ASC to sort results alphabetically. You can chain multiple columns: ORDER BY country, name."
-  ],
-  2: [
-    "Use COUNT(*) to count all rows, or COUNT(column) to count non-null values in a specific column.",
-    "GROUP BY country will group rows by country before applying aggregate functions like SUM or AVG.",
-    "Try: SELECT country, COUNT(*) as user_count, SUM(amount) as total FROM orders GROUP BY country."
-  ],
-  3: [
-    "INNER JOIN returns only rows that have matching values in both tables. Start with: SELECT * FROM users INNER JOIN orders ON users.id = orders.user_id.",
-    "LEFT JOIN returns all rows from the left table even if there's no match in the right table — useful for finding users with no orders.",
-    "Alias your tables for cleaner queries: FROM users u JOIN orders o ON u.id = o.user_id."
-  ],
-  default: [
-    "Break the problem into smaller parts. What data do you need first?",
-    "Check your WHERE clause conditions — make sure column names match the schema exactly.",
-    "Try running a simple SELECT * FROM [table] first to understand the data structure before adding complexity."
-  ]
-};
-
-/* ─── Security middleware simulation ─────────────────────────────────────── */
-const BLOCKED_KEYWORDS = ["drop", "delete", "update", "insert", "alter", "truncate", "create", "grant", "revoke"];
-
-const validateQuery = (sql) => {
-  const lower = sql?.toLowerCase()?.trim();
-  if (!lower?.startsWith("select")) {
-    return { valid: false, error: "Security Error: Only SELECT queries are allowed. Queries must begin with SELECT." };
-  }
-  for (const kw of BLOCKED_KEYWORDS) {
-    const regex = new RegExp(`\\b${kw}\\b`);
-    if (regex?.test(lower)) {
-      return { valid: false, error: `Security Error: The keyword "${kw?.toUpperCase()}" is not permitted. Only SELECT operations are allowed.` };
-    }
-  }
-  return { valid: true };
-};
-
 /* ─── Main Component ──────────────────────────────────────────────────────── */
 const AssignmentAttempt = () => {
   const location = useLocation();
