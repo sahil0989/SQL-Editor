@@ -81,8 +81,8 @@ Follow these steps to get the SQL Editor up and running on your local machine.
     ```
     Then, open `.env` and configure your Supabase environment variables:
     ```dotenv
-    VITE_SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL"
-    VITE_SUPABASE_ANON_KEY="YOUR_SUPABASE_ANON_KEY"
+    REACT_APP_SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL"
+    REACT_APP_SUPABASE_KEY="YOUR_SUPABASE_ANON_KEY"
     ```
     You can find these credentials in your Supabase project settings under "API".
 
