@@ -33,14 +33,6 @@ This project is a sophisticated web-based SQL Editor designed for developers and
 -   **Global State Management**: Efficient application state handling using Zustand for a smooth user experience.
 -   **Real-time Notifications**: Provides user feedback for operations using Sonner toasts.
 
-## 🖥️ Screenshots
-
-<!-- TODO: Add actual screenshots of the SQL editor interface, query execution, and result display. Include mobile screenshots if responsive design is a key feature. -->
-
-![Screenshot of SQL Editor interface](https://via.placeholder.com/1200x600?text=SQL+Editor+Interface)
-
-![Screenshot of Query Results](https://via.placeholder.com/1200x600?text=Query+Results)
-
 ## 🛠️ Tech Stack
 
 **Frontend:**
@@ -136,9 +128,9 @@ The application relies on environment variables for connecting to Supabase. Thes
 
 |----------------------|-----------------------------------------------|---------|----------|
 
-| `VITE_SUPABASE_URL`  | The URL of your Supabase project.             | `N/A`   | Yes      |
+| `REACT_APP_SUPABASE_URL`  | The URL of your Supabase project.             | `N/A`   | Yes      |
 
-| `VITE_SUPABASE_ANON_KEY` | The `anon` public key for your Supabase project. | `N/A`   | Yes      |
+| `REACT_APP_SUPABASE_KEY` | The `anon` public key for your Supabase project. | `N/A`   | Yes      |
 
 ### Configuration Files
 -   `tailwind.config.js`: For customizing Tailwind CSS theme, plugins, and utility classes.
