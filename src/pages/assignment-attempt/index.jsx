@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from "react";
+import React, { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavigationHeader from "../../components/ui/NavigationHeader";
 import QuestionPanel from "./components/QuestionPanel";
@@ -60,15 +60,19 @@ const AssignmentAttempt = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const assignment = location?.state?.assignment || {
-    id: 1,
-    title: "Basic SELECT Queries",
-    difficulty: "easy",
-    description: "Retrieve data from the users table.",
-    tags: ["SELECT", "WHERE", "ORDER BY"],
-    estimatedTime: "15 min",
-    category: "Fundamentals"
-  };
+  const assignment = useMemo(() => {
+    return (
+      location?.state?.assignment || {
+        id: 1,
+        title: "Basic SELECT Queries",
+        difficulty: "easy",
+        description: "Retrieve data from the users table.",
+        tags: ["SELECT", "WHERE", "ORDER BY"],
+        estimatedTime: "15 min",
+        category: "Fundamentals"
+      }
+    );
+  }, [location]);
 
   const [sql, setSql] = useState("SELECT * FROM users\nWHERE city = 'NYC'\nORDER BY name ASC;");
   const [result, setResult] = useState(null);
